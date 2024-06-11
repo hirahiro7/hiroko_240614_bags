@@ -1,0 +1,633 @@
+
+sp()
+  @media screen and (max-width: 767px)
+    {block}
+
+lg()
+  @media screen and (min-width: 768px)
+    {block}
+
+vw(size)
+  "calc( %s * (100vw / 375))" % size
+
+vvw(size)
+  return round(100 * (size/750),2)vw
+
+closeclip(size=1)
+  clip-path: polygon((size)px 0, 0 (size)px, "calc(50% - %spx)" % size 50%, 0% "calc(100% - %spx)" % size, (size)px 100%, 50% "calc(50% + %spx)" % size, "calc(100% - %spx)" % size 100%, 100% "calc(100% - %spx)" % size, "calc(50% + %spx)" % size 50%, 100% (size)px, "calc(100% - %spx)" % size 0, 50% "calc(50% - %spx)" % size);
+
+arr(dir,size=2)
+  if dir == 'prev'
+    clip-path: polygon(100% (size)px, (size*2)px 50%, 100% "calc(100% - %spx)" % size, "calc(100% - %spx)" % size 100%, 0 50%, "calc(100% - %spx)" % size 0);
+  else
+    clip-path: polygon((size)px 0, 100% 50%, (size)px 100%, 0 "calc(100% - %spx)" % size, "calc(100% - %spx)" % (size*2) 50%, 0 (size)px);
+
+font-noto()
+  font-family: 'Noto Sans JP', sans-serif;
+
+font-min()
+  font-family: 'Noto Serif JP', serif;
+
+font-roboto()
+  font-family: 'Roboto', sans-serif;
+
+font-lato()
+  font-family: "Lato", sans-serif;
+
+.is-pc
+  display: none;
+  +lg()
+    display: block;
+
+.is-sp
+  display: block;
+  +lg()
+    display: none;
+
+.bagstyle
+  display: block;
+  min-width: 320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+  color: #555;
+  padding-bottom: vw(100);
+  // font-feature-settings: "palt";
+  +lg()
+    min-width: 1190px;
+    padding-bottom: 80px;
+
+  img
+    max-width: 100%;
+    opacity: 0;
+    transition: 1.0s;
+
+    &.is-active
+      opacity: 1;
+  
+  a
+    +lg()
+      transition: .2s;
+
+      &:hover
+        opacity: .7;
+  
+  &__main
+    position: relative;
+    animation: fadeInImg 1.0s;
+    +lg()
+      width: 1190px;
+    
+    img
+      opacity: 1;
+    
+    h2
+      position: absolute;
+      top: vw(20);
+      left: vw(20);
+      color: #fff;
+      display: flex;
+      flex-direction: column
+      align-items: stretch;
+      +lg()
+        top: 53px;
+        left: 70px;
+
+      span
+        font-lato();
+        font-size: vw(24);
+        line-height: 1.6;
+        letter-spacing: .3em;
+        opacity: 0;
+        +lg()
+          font-size: 60px
+
+        for num in (1..4)
+
+          &:nth-child({num})
+            animation: fadeLeft 1.0s (.2*num+.6)s forwards;
+
+        &:nth-child(3)
+          letter-spacing: 1.05em;
+
+        &:nth-child(4)
+          font-size: vw(14);
+          letter-spacing: .28em;
+          margin-top: .3em;
+          font-weight: 300;
+          +lg()
+            font-size: 34px;
+            letter-spacing: .3em;
+            margin-top: .5em;
+        
+
+  &__txt
+    position: relative;
+    margin-top: vw(50);
+    width: vw(275);
+    +lg()
+      margin-top: 100px;
+      width: 600px;
+
+    p
+      font-size: vw(12);
+      line-height: round(30/12,2);
+      text-align: center;
+      +lg()
+        font-size: 16px;
+        line-height: round(40/16,2);
+
+      & + p
+        margin-top: round(30/12,2)em;
+        +lg()
+          margin-top: round(40/16,2)em;
+  
+  &__cnt
+    position: relative;
+    margin-top: vw(100);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: vw(120);
+    +lg()
+      width: 1000px;
+      margin-top: 200px;
+      gap: 200px
+  
+  &__btn
+    position: relative;
+    margin-top: vw(50);
+    +lg()
+      margin-top: 100px;
+
+    a
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: vw(184);
+      height: vw(42);
+      border: 1px solid #555;
+      font-size: vw(10);
+      font-weight: bold;
+      letter-spacing: .1em;
+      text-decoration: none !important;
+      color: #555 !important
+      +lg()
+        width: 316px;
+        height: 78px;
+        font-size: 14px;
+
+  &__other
+    position: relative;
+    margin-top: vw(100);
+    +lg()
+      margin-top: 200px;
+
+  &__staff
+    position: relative;
+    margin-top: vw(100);
+    +lg()
+      margin-top: 200px;
+
+.sc
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  +lg()
+    width: 1000px;
+
+  &__no
+    position: relative;
+    text-align: center;
+    font-size: vw(30);
+    line-height: 1.1;
+    font-lato();
+    letter-spacing: .05em;
+    border-bottom: 3px solid #555;
+    margin-bottom: vw(20);
+    +lg()
+      font-size: 50px;
+      margin-bottom: 30px;
+      line-height: 1.4;
+  
+  &__ttl
+    text-align: center;
+    font-size: vw(20);
+    line-height: 1.5;
+    font-lato();
+    letter-spacing: .05em;
+    margin-bottom: vw(40);
+    +lg()
+      font-size: 24px;
+      line-height: round(40/24,2);;
+      margin-bottom: 50px;
+  
+  &__img
+    position: relative;
+    margin-bottom: vw(50);
+    +lg()
+      margin-bottom: 100px;
+
+    a
+      position: relative;
+      display: block;
+
+      +lg()
+        &:hover
+          opacity: 1;
+
+          &::before
+            opacity: 1;
+            transition: .4s .2s;
+
+          &::after
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+        &::before
+          content: "more";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          color: #fff;
+          font-lato();
+          font-size: 24px;
+          letter-spacing: .12em;
+          font-weight: 400;
+          opacity: 0;
+          transition: .4s;
+          z-index 5;
+          
+
+        &::after
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,.5);
+          clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+          transition: .4s;
+
+  &__txt
+    position: relative;
+    margin-bottom: vw(50);
+    +lg()
+      margin-bottom: 100px;
+
+    p
+      font-size: vw(11);
+      text-align: center;
+      line-height: round(20/11,2);
+      +lg()
+        font-size: 14px;
+        line-height: round(34/14,2);
+
+  &__items
+    position: relative;
+    padding: vw(50) vw(20);
+    box-sizing: border-box;
+    background: #F6F4ED;
+    width: 100%;
+
+    ^[0]:nth-child(2) &
+      background: #F6F5F4;
+
+    ^[0]:nth-child(3) &
+      background: #EFF1EB;
+
+    +lg()
+      padding: 100px;
+
+    > .sc-it
+      position: relative;
+
+      & + .sc-it
+        margin-top: vw(30);
+        +lg()
+          margin-top: 50px;
+      
+      &.is-ver 
+        z-index 10;
+
+        & + .sc-it
+          margin-top: vw(-15);
+          +lg()
+            margin-top: -20px;
+  
+  &__recommend
+    position: relative;
+    margin-top: vw(50);
+    +lg()
+      margin-top: 50px;
+
+.sc-it
+  display: flex;
+  gap: vw(20);
+  align-items: flex-end;
+  +lg()
+    gap: 50px;
+
+  &.is-ver
+    display: block;
+
+  &.is-rev
+    +lg()
+      margin-left: auto;
+      width: max-content;
+
+  &__img
+    width: vw(210);
+    +lg()
+      width: 480px;
+
+    &:is(.is-nor *)
+      order: 1;
+
+    &:is(.is-rev *)
+      order: 2;
+
+    &:is(.is-ver *)
+      width: vw(245);
+      +lg()
+        width: 560px;
+
+    a
+      position: relative;
+      display: block;
+
+      +lg()
+        &:hover
+          opacity: 1;
+
+          &::before
+            opacity: 1;
+            transition: .4s .2s;
+
+          &::after
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+        &::before
+          content: "more";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          color: #fff;
+          font-lato();
+          font-size: 24px;
+          letter-spacing: .12em;
+          font-weight: 400;
+          opacity: 0;
+          transition: .4s;
+          z-index 5;
+          
+
+        &::after
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,.5);
+          clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+          transition: .4s;
+
+  &__credit
+    position: relative;
+
+    &:is(.is-nor *)
+      order: 2;
+
+    &:is(.is-rev *)
+      order: 1;
+
+    &:is(.is-ver *)
+      margin-top: vw(15);
+      +lg()
+        margin-top: 20px;
+
+.sc-credit
+  &__name
+    font-size: vw(10);
+    line-height: 2.0;
+    +lg()
+      font-size: 14px;
+      letter-spacing: .1em;;
+      line-height: round(24/14,2);
+
+  &__price
+    font-size: vw(10);
+    line-height: 2.0;
+    +lg()
+      font-size: 14px;
+      letter-spacing: .1em;;
+      line-height: round(24/14,2);
+  
+  &__btn
+    position: relative;
+    margin-top: vw(10);
+    +lg()
+      margin-top: 20px;
+
+    a
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: vw(64);
+      height: vw(24);
+      background: #fff;
+      text-decoration: none !important;
+      color: #555;
+      font-size: vw(10);
+      font-lato();
+      +lg()
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+
+.sc-recommend
+  display: flex;
+  flex-direction: column
+  align-items: center;
+  width: 100%;
+
+  &__ttl
+    font-size: vw(20);
+    font-lato();
+    font-weight: bold;
+    display: flex;
+    flex-direction: column
+    align-items: center;
+    margin-bottom: vw(30);
+    +lg()
+      font-size: 30px;
+      margin-bottom: 40px;
+      font-weight: 500;
+
+    &::after
+      content: "";
+      display: block;
+      width: vw(30);
+      height: 1px;
+      background: #555;
+      margin-top: vw(10);
+      +lg()
+        margin-top: 10px;
+        width: 60px;
+
+.others-area
+  display: flex;
+  flex-direction: column
+  align-items: center;
+  width: 100%;
+  +lg()
+    width: 1000px;
+
+  &__ttl
+    font-size: vw(20);
+    font-lato();
+    font-weight: bold;
+    display: flex;
+    flex-direction: column
+    align-items: center;
+    margin-bottom: vw(30);
+    +lg()
+      font-size: 30px;
+      margin-bottom: 40px;
+      font-weight: 500;
+
+    &::after
+      content: "";
+      display: block;
+      width: vw(30);
+      height: 1px;
+      background: #555;
+      margin-top: vw(10);
+      +lg()
+        margin-top: 10px;
+        width: 60px;
+  
+  &__txt
+    position: relative;
+    margin-top: vw(50);
+    font-size: vw(11);
+    line-height: round(20/11,2);
+    text-align: center;
+    +lg()
+      margin-top: 100px;
+      font-size: 14px;
+      line-height: round(34/14,2);  
+
+  &__cnt
+    position: relative;
+    margin-top: vw(50);
+    +lg()
+      margin-top: 80px;
+
+.bagstyle-staff
+  display: flex;
+  flex-direction: column
+  align-items: center;
+  width: 100%;
+  +lg()
+    width: auto;
+
+  &__ttl
+    font-size: vw(20);
+    font-lato();
+    font-weight: bold;
+    display: flex;
+    flex-direction: column
+    align-items: center;
+    margin-bottom: vw(30);
+    +lg()
+      font-size: 30px;
+      margin-bottom: 60px;
+  
+  &__cnt
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    +lg()
+      width: 436px;
+      justify-content: space-between;
+
+.staff-it
+  width: vw(132);
+  +lg()
+    width: 166px;
+
+  &__link
+    display: flex;
+    flex-direction: column
+    align-items: center;
+    color: #555 !important;
+    text-decoration: none !important;
+    gap: vw(10);
+    +lg()
+      gap: 20px;
+  
+  &__img
+    position: relative;
+    margin-bottom: vw(5);
+    +lg()
+      margin-bottom: 4px;
+
+    img
+      width: 100%;
+      height: auto;
+  
+  &__name
+    font-size: vw(16);
+    line-height: 1.0;
+    font-weight: 500;
+    font-lato();
+    +lg()
+      font-size: 22px;
+
+  &__price
+    font-size: vw(12);
+    line-height: 1.0;
+    font-weight: 500;
+    font-lato();
+    +lg()
+      font-size: 18px;
+  
+  &__shop
+    display: flex;
+    flex-direction: column
+    align-items: center;
+
+    p
+      font-size: vw(11);
+      line-height: round(24/11,2);
+      letter-spacing: .1em;
+      text-align: center;
+      width: max-content;
+      +lg()
+        font-size: 14px;
+
+@keyframes fadeLeft
+  from
+    opacity: 0;
+    transform: translateX(20px);
+  to
+    opacity: 1;
+    transform: translateX(0);
+
+@keyframes fadeInImg
+  from
+    opacity: 0;
+  to
+    opacity: 1;

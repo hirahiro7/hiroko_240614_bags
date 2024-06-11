@@ -1,0 +1,180 @@
+extends _includes/_layout.pug
+include _includes/_meta.pug
+include _includes/_item.pug
+
+block var
+  - metas = json;
+  -
+    var datas = [
+      {
+        num:'01',
+        ttl:'VERNICE<br>×<br>SHEER TOPS',
+        link:'/s/brand/hirokohayashi/search?st=1&un=fku&link_id=709_H_search&fr=VERNICE',
+        txt:'Tシャツになる手前の時期、活躍するシアートップス。<br>バッグも思い切って麻素材の“VERNICE”を投入すると、<br>ひと足先に軽やかさを実現します。',
+        items:[
+          {
+            link:'/brand/hiroko-hayashi/item/BR70924S0011?areaid=sp709_hiroko&wid=70908561&clr_id=101',
+            name:'VERNICE TOTE BAG',
+            price:'¥44,000',
+            type:'is-nor',
+          },
+          {
+            link:'/brand/hiroko-hayashi/item/BR70924S0012?areaid=sp709_hiroko&wid=70908566&clr_id=101',
+            name:'VERNICE SHOULDER <br>BAG',
+            price:'¥42,900',
+            type:'is-rev',
+          },
+        ],
+      },
+      {
+        num:'02',
+        ttl:'BAGNO<br>×<br>BLACK＆WHITE',
+        link:'/s/brand/hirokohayashi/search?st=1&un=fku&link_id=709_H_search&fr=BAGNO',
+        txt:'気張らず洗練されて見えるモノトーンスタイルに投入するなら、<br>レトロな地下鉄のタイルをイメージした“BAGNO”のバッグ。<br>整然と並ぶフリンジが「いつもと違う」<br>新しさを与えてくれます。',
+        items:[
+          {
+            link:'/brand/hiroko-hayashi/item/BR70924S0020?areaid=sp709_hiroko&wid=70908507&clr_id=102',
+            name:'BAGNO SHOULDER BAG_S ',
+            price:'¥41,800',
+            type:'is-ver',
+          },
+          {
+            link:'/brand/hiroko-hayashi/item/BR70924S0019?areaid=sp709_hiroko&wid=70908506&clr_id=102',
+            name:'BAGNO<br> SHOULDER BAG_M ',
+            price:'¥55,000',
+            type:'is-rev',
+          },
+        ],
+      },
+      {
+        num:'03',
+        ttl:'FABRE<br>×<br>LADY STYLE',
+        link:'/s/brand/hirokohayashi/search?st=1&un=fku&link_id=709_H_search&fr=FABRE',
+        txt:'夏を連れてくるバッグ“FABRE”。<br>透ける質感がワンピースやスカートに適度な緊張感を与え、<br>甘さを抑えてくれます。<br>遊び心のあるプリントで太陽系に思いを馳せて。',
+        items:[
+          {
+            link:'/brand/hiroko-hayashi/item/BR70924S0037?areaid=sp709_hiroko&wid=70908587&clr_id=101',
+            name:'FABRE SHOULDER <br class="is-pc">BAG_S',
+            price:'¥38,500',
+            type:'is-rev',
+          },
+          {
+            link:'/brand/hiroko-hayashi/item/BR70924S0035?areaid=sp709_hiroko&wid=70908585&clr_id=101',
+            name:'FABRE SHOULDER <br class="is-pc">BAG_M',
+            price:'¥42,900',
+            type:'is-nor',
+          },
+        ],
+      },
+    ];
+
+    var staffs = [
+      {
+        link:'/s/brand/hirokohayashi/staff_detail/index.html?user_id=55117',
+        name:'U',
+        height:'161cm',
+      },
+      {
+        link:'/s/brand/hirokohayashi/staff_detail/index.html?user_id=55113',
+        name:'NICHI',
+        height:'150cm',
+      }
+    ]
+
+block meta
+  +meta(metas.site)
+
+block append font
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+  link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet")
+  link(href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet")
+  link(href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet")
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap")
+
+block append link
+  //- link(rel="stylesheet" href="https://portfolio-technics.com/sample/0-css/style.css")
+  link(href=`/pc/css/bagstyle.css?${Date.now()}` rel='stylesheet' type='text/css')
+
+block append script
+  script(type="text/javascript" src=`/pc/js/bagstyle.js?${Date.now()}`)
+  
+block append plugin
+  // slick
+  link(rel="tylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css")
+  script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js")
+  // lenis
+  script(src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js")
+  // gsap
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js")
+
+block content
+  artilce.bagstyle
+    .bagstyle__main
+      h2
+        span SPECIAL
+        span FEELING
+        span BAGS
+        span FOR　SUMMER
+      img(src="/_img/pc/pc_mv.jpg", alt="", class="is-pc")(m:id="IF:VIEW_PC")
+      img(src="/_img/pc/sp_mv.jpg", alt="", class="is-sp")(m:id="IF_NOT:VIEW_PC")
+    .bagstyle__txt
+      p 派手じゃないのに目に留まる、<br class="is-pc">目新しい特別感を与えてくれるのがヒロコ ハヤシのバッグ。
+      p 一見難しそうに見えるデザインでも、あなたの個性にすっとなじんで、<br class="is-pc">着こなしを活性化してくれます。<br class="is-pc">陽射しの下で背筋を伸ばし、もっと歩きたくなる。<br class="is-pc">夏が来る前に新調したいバッグをふたつのスタイリングでご紹介します。
+    .bagstyle__cnt
+      each data , i in datas
+        sectioin.sc
+          p.sc__no !{data.num}
+          h3.sc__ttl !{data.ttl}
+          .sc__img
+            a(href=`${data.link}`) 
+              img(src=`/_img/pc/sc${i+1}.jpg`, alt="")
+          .sc__txt
+            p !{data.txt}
+          .sc__items
+            each item, j in data.items
+              .sc-it(class=`${item.type}`)
+                .sc-it__img
+                  a(href=`${item.link}`)
+                    img(src=`/_img/pc/it${i+1}-${j+1}.jpg`, alt="")
+                .sc-it__credit
+                  .sc-credit
+                    p.sc-credit__name !{item.name}
+                    p.sc-credit__price !{item.price}
+                    .sc-credit__btn
+                      a(href=`${item.link}`) BUY 
+          .sc__recommend.sc-recommend
+            p.sc-recommend__ttl RECOMMEND
+            .sc-recommend__cnt
+              .list_search-result
+                //- - for(var z = 0; z < 8; z++)
+                //-   +item()
+
+    .bagstyle__btn
+      a(href="/s/brand/hirokohayashi/search?st=1&un=fku&it=WK01,WK02,WK03,WK04,WK05,WK06,WK07,WK08") BAG VIEW ALL
+
+    .bagstyle__other
+      section.others-area
+        h3.others-area__ttl OTHERS
+        .others-area__img
+          img(src="/_img/pc/other.jpg", alt="")
+        p.others-area__txt FABREと同じモチーフ「地球から飛び出した太陽」の<br class="is-sp">刺繍を施したポーチが登場。<br>バッグを持つ手元を彩るアクセサリーと共に、<br class="is-sp">小さなアイテムも合わせてチェック。
+        .others-area__cnt
+          .list_search-result
+            //- - for(var i = 0; i < 8; i++)
+            //-   +item()
+
+    .bagstyle__staff.bagstyle-staff
+      p.bagstyle-staff__ttl MODEL STAFF
+      .bagstyle-staff__cnt
+        each staff, i in staffs
+          .staff-it
+            a(href=`${staff.link}`).staff-it__link
+              .staff-it__img
+                img(src=`/_img/pc/staff${i+1}.jpg`, alt="")
+              p.staff-it__name !{staff.name}
+              p.staff-it__height !{staff.height}
+              .staff-it__shop
+                p HIROKO HAYASHI
+                p 新宿小田急ヒロコハヤシ
