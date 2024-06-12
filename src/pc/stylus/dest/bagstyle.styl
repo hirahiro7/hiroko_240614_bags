@@ -103,34 +103,41 @@ font-lato()
         letter-spacing: .3em;
         opacity: 0;
         +lg()
-          font-size: 60px
+          font-size: 62px
 
         for num in (1..4)
 
           &:nth-child({num})
             animation: fadeLeft 1.0s (.2*num+.6)s forwards;
 
+        &:nth-child(2)
+          letter-spacing: 1.07em;
+
         &:nth-child(3)
-          letter-spacing: 1.05em;
+          letter-spacing: 2.4em;
+          font-size: vw(14);
+          +lg()
+            font-size: 36px;
+            letter-spacing: 2.45em;
 
         &:nth-child(4)
           font-size: vw(14);
-          letter-spacing: .28em;
+          letter-spacing: .57em;
           margin-top: .3em;
           font-weight: 300;
           +lg()
-            font-size: 34px;
-            letter-spacing: .3em;
+            font-size: 36px;
+            letter-spacing: .58em;
             margin-top: .5em;
         
 
   &__txt
     position: relative;
     margin-top: vw(50);
-    width: vw(275);
+    width: vw(310);
     +lg()
       margin-top: 100px;
-      width: 600px;
+      width: 640px;
 
     p
       font-size: vw(12);
@@ -181,15 +188,17 @@ font-lato()
         height: 78px;
         font-size: 14px;
 
-  &__other
+  &__archive
     position: relative;
     margin-top: vw(100);
+    padding: 0 vw(20);
+    box-sizing: border-box;
     +lg()
       margin-top: 200px;
 
   &__staff
     position: relative;
-    margin-top: vw(100);
+    margin-top: vw(80);
     +lg()
       margin-top: 200px;
 
@@ -231,8 +240,12 @@ font-lato()
     margin-bottom: vw(50);
     +lg()
       margin-bottom: 100px;
-
+    
     a
+      +lg()
+        opacity: 1 !important;
+
+    a[href]
       position: relative;
       display: block;
 
@@ -333,6 +346,9 @@ font-lato()
   align-items: flex-end;
   +lg()
     gap: 50px;
+  
+  &.is-right
+    justify-content: flex-end;
 
   &.is-ver
     display: block;
@@ -341,6 +357,18 @@ font-lato()
     +lg()
       margin-left: auto;
       width: max-content;
+    
+    &.is-fst
+      justify-content: space-between;
+      align-items: center;
+      +lg()
+        align-items: flex-end;
+  
+  &.is-multi
+    display: block;
+
+  &.is-multirev
+    display: block;
 
   &__img
     width: vw(210);
@@ -358,7 +386,13 @@ font-lato()
       +lg()
         width: 560px;
 
-    a
+    &:is(.is-multi *)
+      width: 100%;
+
+    &:is(.is-multirev *)
+      width: 100%;
+
+    a[href]
       position: relative;
       display: block;
 
@@ -409,11 +443,29 @@ font-lato()
 
     &:is(.is-rev *)
       order: 1;
+    
+    &:is(.is-fst *)
+      +lg()
+        padding-bottom: 80px;
+        margin-right: 50px;
 
     &:is(.is-ver *)
       margin-top: vw(15);
       +lg()
         margin-top: 20px;
+
+    &:is(.is-multi *)
+      margin-top: vw(15);
+      display: flex;
+      justify-content: flex-end;
+      +lg()
+        margin-top: 20px;
+
+    &:is(.is-multirev *)
+      margin-top: vw(15);
+      +lg()
+        margin-top: 20px;
+
 
 .sc-credit
   &__name
@@ -467,7 +519,7 @@ font-lato()
     display: flex;
     flex-direction: column
     align-items: center;
-    margin-bottom: vw(30);
+    margin-bottom: vw(20);
     +lg()
       font-size: 30px;
       margin-bottom: 40px;
@@ -484,7 +536,15 @@ font-lato()
         margin-top: 10px;
         width: 60px;
 
-.others-area
+  &__txt
+    margin-bottom: vw(20);
+    font-size: vw(12);
+    line-height: 1.0;
+    +lg()
+      margin-bottom: 50px;
+      font-size: 14px;
+
+.archives-area
   display: flex;
   flex-direction: column
   align-items: center;
@@ -518,14 +578,15 @@ font-lato()
   
   &__txt
     position: relative;
-    margin-top: vw(50);
+    margin-bottom: vw(20);
     font-size: vw(11);
     line-height: round(20/11,2);
     text-align: center;
     +lg()
-      margin-top: 100px;
+      margin-top: 0;
       font-size: 14px;
-      line-height: round(34/14,2);  
+      margin-bottom: 40px;
+      line-height: round(34/14,2);
 
   &__cnt
     position: relative;

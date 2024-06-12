@@ -10,7 +10,7 @@ block var
         num:'01',
         ttl:'GRIGLIA<br>×<br>WHITE COORDINATE',
         link:'/s/brand/hirokohayashi/search?st=1&un=fku&link_id=709_H_search&fr=GRIGLIA',
-        txt:'ともすると、気の抜けたスタイリングになりがちな<br>白のスタイリングを格上げする"GRIGLIA"。<br>メッシュの透け感で涼し気に見えるだけでなく、<br>適度な緊張感を与えてくれます。',
+        txt:'ともすると、気が抜けがちな<br>白のスタイリングを格上げする”GRIGLIA”。<br>メッシュの透け感で涼し気に見えるだけでなく、<br>適度な緊張感を与えてくれます。',
         reco:'メッシュ越しに見える小物もお洒落に遊ぶ',
         items:[
           {
@@ -23,7 +23,7 @@ block var
             link:'/brand/hiroko-hayashi/item/BR70999A1199?areaid=sp709_hiroko&wid=70921372&clr_id=102',
             name:'GRIGLIA<br>TOTE BAG',
             price:'¥30,800',
-            type:'is-rev',
+            type:'is-rev is-fst',
           },
         ],
       },
@@ -31,41 +31,41 @@ block var
         num:'02',
         ttl:'OSSO VIVO PUNTI<br>×<br>BLOUSE STYLE',
         link:'/s/brand/hirokohayashi/search?st=1&un=fku&link_id=709_H_search&fr=OSSO+VIVO+PUNTI',
-        txt:'ゆとりと緊張感、両方叶えるブラウスのスタイリングは遊びと実用を兼ね備えた"OSSO VIVO PUNTI"がおすすめ。<br>レザーの重さを感じさせない、清涼なミントグリーンがアクセサリーの延長的に活躍します。',
+        txt:'ゆとりと緊張感、両方叶えるブラウスのスタイリングは<br>遊びと実用を兼ね備えた"OSSO VIVO PUNTI"がおすすめ。<br>レザーの重さを感じさせない、清涼なミントグリーンが<br>アクセサリーの延長的に活躍します。',
         reco:'日差しの下でもさらりと持てる寒色カラー',
         items:[
           {
             link:'/brand/hiroko-hayashi/item/BR70999A1189?areaid=sp709_hiroko&wid=70921153&clr_id=103',
             name:'OSSO VIVO PUNTI<br>SHOULDER BAG',
             price:'¥61,600',
-            type:'is-ver',
+            type:'is-nor',
           },
           {
             link:'/brand/hiroko-hayashi/item/BR70999A1190?areaid=sp709_hiroko&wid=70921154&clr_id=103',
             name:'OSSO VIVO PUNTI<br>HAND BAG',
             price:'¥72,600',
-            type:'is-rev',
+            type:'is-multi',
           },
         ],
       },
       {
         num:'03',
-        ttl:'OTTICA blue<br>×<br>T-SHEETS&DENIM',
+        ttl:'OTTICA blue<br>×<br>T-SHEETS & DENIM',
         link:'',
-        txt:'王道なデニムコーディネートこそ、バッグで遊べば手軽にイメージチェンジが叶います。<br>グラフィカルなパターンの"OTTICA blue"なら辛口から離れすぎず、抜け感ときちんと感のバランスをとってくれます。',
-        reco:'1つは持っていたいロングセラー「OTTICA」',
+        txt:'王道なデニムコーディネートこそ、<br>バッグで遊べば手軽にイメージチェンジが叶います。<br>グラフィカルなパターンの"OTTICA blue"なら辛口から離れすぎず、<br>抜け感ときちんと感のバランスをとってくれます。',
+        reco:'ひとつは持っていたいロングセラー「OTTICA」',
         items:[
           {
             link:'/brand/hiroko-hayashi/item/BR70999A1197?areaid=sp709_hiroko&wid=70921047&clr_id=101',
             name:'OTTICA<br>SHOULDER BAG',
             price:'¥49,500',
-            type:'is-rev',
+            type:'is-rev is-right',
           },
           {
-            link:'/item/BR70999A1216',
+            link:'/brand/hiroko-hayashi/item/BR70999A1216?areaid=sp709_hiroko&wid=70931041&clr_id=101',
             name:'OTTICA<br>HAND BAG',
             price:'¥55,000',
-            type:'is-nor',
+            type:'is-multirev',
           },
         ],
       },
@@ -131,7 +131,8 @@ block content
           p.sc__no !{data.num}
           h3.sc__ttl !{data.ttl}
           .sc__img
-            a(href=`${data.link}`) 
+            -console.log(data.link)
+            a(href=(data.link) ? `${data.link}` : false) 
               img(src=`/_img/pc/sc${i+1}.jpg`, alt="")
           .sc__txt
             p !{data.txt}
@@ -149,6 +150,7 @@ block content
                       a(href=`${item.link}`) BUY 
           .sc__recommend.sc-recommend
             p.sc-recommend__ttl RECOMMEND
+            .sc-recommend__txt !{data.reco}
             .sc-recommend__cnt
               .list_search-result
                 //- - for(var z = 0; z < 8; z++)
@@ -157,16 +159,13 @@ block content
     .bagstyle__btn
       a(href="/s/brand/hirokohayashi/search?st=1&un=fku&it=WK01,WK02,WK03,WK04,WK05,WK06,WK07,WK08") BAG VIEW ALL
 
-    .bagstyle__other
-      section.others-area
-        h3.others-area__ttl OTHERS
-        .others-area__img
-          img(src="/_img/pc/other.jpg", alt="")
-        p.others-area__txt FABREと同じモチーフ「地球から飛び出した太陽」の<br class="is-sp">刺繍を施したポーチが登場。<br>バッグを持つ手元を彩るアクセサリーと共に、<br class="is-sp">小さなアイテムも合わせてチェック。
-        .others-area__cnt
-          .list_search-result
-            //- - for(var i = 0; i < 8; i++)
-            //-   +item()
+    .bagstyle__archive
+      section.archives-area
+        h3.archives-area__ttl ARCHIVE
+        p.archives-area__txt バッグスタイリング特集　vol.1はこちら
+        .archives-area__img
+          a(href="/s/brand/hirokohayashi/topics/20240426/") 
+            img(src="/_img/pc/archive1.jpg", alt="")
 
     .bagstyle__staff.bagstyle-staff
       p.bagstyle-staff__ttl MODEL STAFF

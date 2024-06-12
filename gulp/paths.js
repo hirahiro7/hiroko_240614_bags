@@ -51,7 +51,7 @@ module.exports = {
     }
   },
   url: {
-    pc: "/s/brand/hirokohayashi/topics/20240426/",
-    sp: "/res/s/brand/hirokohayashi/topics/20240426/"
+    pc: "/s/brand/hirokohayashi/topics/20240614/",
+    sp: "/res/s/brand/hirokohayashi/topics/20240614/"
   }
 };
